@@ -1,0 +1,106 @@
+{% load i18n %}
+<!-- head of injected part --> 
+
+      <div class="panel panel-default">
+        <div class="panel-heading"> 
+          <span class="fa-stack ">
+              <i class="fa fa-square-o fa-stack-2x "></i>
+              <i class="fa fa-list-ul fa-stack-1x "></i>
+          </span> 
+          {% trans "Resultats de la recherche" %} 
+        </div>
+        <div class="panel-body-mod"> 
+
+          {% for i in items.object_list %}
+           
+           <div class="freelancer-list-item hoverable clearfix">
+
+                <a class="span-2 freelancer-image" href="#">
+                  <!-- <img width="70" height="70" src="http://placehold.it/70x70" alt="image"> --> 
+                  <div class="stacked-icons">
+                    <span class="fa-stack fa-3x">
+                      <i class="fa fa-calendar-o fa-stack-17x blue-ns"></i>
+                      <strong class="fa-stack-1x calendar-text">{{i.get_offerType_display}}</strong>
+                    </span>
+                  </div>
+                </a>
+
+                <div class="span-70 boxmodelfix info">
+                    <h3>
+                        <a onclick="return false" class="freelancer left crop span-10" rel="nofollow" href="#"> 
+                          <i class="fa fa-newspaper-o gray-ns"></i>
+                          {{i.title}}
+                        </a>
+                        <!-- <span class="cert cert-level1-small " data-level="1"> </span> --> 
+                        <div class="widget-member-prizes"></div>       
+                    </h3>
+
+                    <div class="job-title crop span-10">
+                        <i class="fa fa-tag sml-size dark-green"></i> {{ i.get_category_display }} | 
+                        <i class="fa fa-map-marker rose sml-size"></i> &nbsp; <strong>{{i.get_region_display}}</strong> |
+                        <span> <i class="fa fa-calendar sml-size blue"></i> &nbsp; {{i.created|date:"SHORT_DATE_FORMAT"}} </span> 
+                    </div>
+
+                    <div class="job-title crop span-10">
+                      <i class="fa fa-"></i> &nbsp; <span> {{ i.head_summary|safe }} </span>
+                    </div>
+
+                    <ul class="horizontal left">
+                      <li> <i class="fa fa-eye min-size"></i> <strong>{{ i.views }}</strong> fois</li>
+                    </ul>
+
+                    &nbsp;
+
+                    <span class="cert cert-level-small " data-level="612" data-tooltip-content="{{ i.tooltip_head_summary|safe }}" data-tooltip-pos="top" 
+                    title="{{ i.tooltip_head_summary|safe }}"></span>
+
+                    </div>
+
+                    <div class="span-3 last details freelancer">
+
+                     <a class="span-2 contact-member call-to-action button action-signup-show" rel="nofollow" href="{{i.get_absolute_url}}">
+                      Voir plus
+                    </a>  
+                   </div>
+            </div>
+
+          {% endfor %}
+
+        <div class="clearfix"></div>
+
+        <div style="padding:10px; text-align:center">
+          <div class="pagination">
+            <span class="step-links">
+                {% if items.has_previous %}
+                 
+                 &nbsp;
+                  <a class="btn btn-info" 
+                      href="#respo"
+                      onclick="Dajaxice.car_shop.pagination2(Dajax.process,{'p':{{ items.previous_page_number }}, 'form': $('#search_form').serialize(true)});  ">{% trans "Retour" %} &nbsp;
+                  </a>   
+                 
+                {% endif %}
+
+                <span class="current">
+                    &nbsp; {% trans "Page" %} {{ items.number }} / {{ items.paginator.num_pages }}. &nbsp;
+                </span>
+
+                {% if items.has_next %}
+                  
+                  &nbsp;  
+                  <a class="btn btn-info" 
+                      href="#respo"
+                      onclick="Dajaxice.car_shop.pagination2(Dajax.process,{'p':{{ items.next_page_number }}, 'form': $('#search_form').serialize(true)}); ">{% trans "Suivant" %} &nbsp;
+                  </a>
+                {% endif %}
+            </span>
+
+
+        </div>
+        </div>
+
+
+        </div>
+      </div>
+      
+<!-- end of the injected part -->    

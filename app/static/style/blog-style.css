@@ -1,0 +1,200 @@
+/*---start-Blog comments and news-----*/
+.blog-section{
+	float:left;
+	width:68%;
+	margin-right:2%;
+}
+.blog-artical{
+	/*background:#2B2937;*/
+	border-top-left-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	-o-border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	-o-border-top-right-radius: 4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	border-bottom: 2px solid #1A1822;
+}
+.blog-artical-head,.blog-artical-head img{
+	position:relative;
+	height: 210px !important;
+}
+.artical-date{
+	background: url(../images/news-date-icon.png) no-repeat;
+	width: 75px;
+	height: 75px;
+	display: block;
+	position: absolute;
+	top: -11px;
+	left: 3%;
+}
+.artical-date{
+	color:#FFF;
+	text-align:center;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	cursor:pointer;
+}
+.artical-date:hover{
+	color:#2B2937;
+}
+.artical-date span{
+	display: block;
+	margin-top: 9px;
+	font-size: 1.3em;
+}
+.artical-info{
+	padding: 2% 4% 5%;
+}
+.artical-info a h4{
+	/*color:#FFF;*/
+	font-size:1.5em;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.artical-info a h4:hover{
+	color:#1ABC9C;
+}
+.artical-info p{
+	font-size: 0.875em;
+	/*color: #9095AA;*/
+	line-height: 1.5em;
+	margin-top:0.5em;
+}
+.artical-related-info-row-left{
+	float:left;	
+	padding: 0.9em 0.5em 0.5em 1.5em;
+}
+.artical-related-info-row-left li,.artical-related-info-row-right li{
+	display:inline-block;
+}
+.artical-related-info-row-left li a{
+	font-size: 0.875em;
+	/*color: #9095AA;*/
+	line-height: 1.5em;
+	margin-top:0.5em;
+}
+.artical-related-info-row-right{
+	float:right;
+}
+.spech{
+	background: url(../images/spech.png) no-repeat 10% 50%;
+	padding: 0px 0px 0px 30px;
+}
+.tag{
+	background: url(../images/tags.png) no-repeat 5% 50%;
+	padding: 0px 0px 0px 40px;
+}
+.tag a{
+	font-size:0.75em;
+	text-decoration: underline;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.tag a:hover,.spech:hover{
+	color:#9095AA;
+	cursor:pointer;
+}
+.author{
+	background: url(../images/pencile.png) no-repeat 10% 50%;
+	padding: 0px 0px 0px 40px;
+	/*color: #FFF;*/
+	font-size: 1em;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.author:hover{
+	color: #9095AA;
+}
+.articl-readmore{
+	background: url(../images/readmore.png) no-repeat 4% 50%;
+	padding: 4px 7px 0px 40px;
+	font-size: 1em;
+	display: block;
+	height: 27px;
+	color:#1ABC9C;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.articl-readmore:hover{
+	color:#000;
+	/*background:url(../images/readmoreh.png) no-repeat 4% 50%;*/
+	background: url(../images/readmore.png) no-repeat 4% 50%;
+}
+.artical-related-info {
+	border-top: 1px solid rgba(144, 149, 170, 0.22);
+}
+.artical-related-info-row-right li {
+	border-left: 1px solid rgba(144, 149, 170, 0.22);
+	padding: 0.5em;
+}
+.artical-img{
+	width:100%;
+	height:34%;
+	border-top-left-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	-o-border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	-o-border-top-right-radius: 4px;
+}
+
+/* pagination */
+
+.page-numbers i{
+	background:url(../images/sprite.png) no-repeat;
+	height:16px;
+	width:16px;
+	display:block;
+	vertical-align: middle;
+}
+.page-numbers li a.prev,.page-numbers li a.next{
+	padding:10px 10px 9px 10px;
+}
+.page-numbers i.prev{
+	background-position:-232px -174px;
+}
+.page-numbers i.next{
+	background-position:-249px -174px;
+}
+.page-numbers ul li{
+	display: inline-block;
+	float: left;
+	margin:0 1px;
+}
+.page-numbers ul li a{
+	display: block;
+	color:#687787;
+	background:#fff;
+	border: 1px solid #CCC3C3;
+	padding:8px 13px;
+	font-size:0.9em;
+	font-weight:600;
+	text-align:center;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.page-numbers li a:hover{
+	background:#ddd;
+	color:#000;
+
+}

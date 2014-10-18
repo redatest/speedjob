@@ -1,0 +1,307 @@
+{% load dajaxice_templatetags i18n group_check cache %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+
+<html lang="ar" class="csstransforms no-csstransforms3d csstransitions" xml:lang="ar" dir="{{direction}}"> 
+<!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> {% block title %} SpeedJob {% endblock %} </title>
+
+        <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Vous cherchez un travail? Vous trouvez plain d&#x27;offres d&#x27;emploi sur notre plateforme Speedjob qui accompagnent dans votre procedure">
+      <meta name="keywords" content="Travail Offres Annonces Moteur de Recherche Chercher Je cherche Trouver Je trouve Travailler">
+      <meta name="author" content="">
+      <!-- JS -->
+      <!-- HTML5 Support for IE -->
+      <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+      <![endif]-->
+      <!-- JS -->
+    {% block style %}
+      <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Glegoo" type="text/css" />
+        
+        <link rel="stylesheet" href="/static/header/header.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/style/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/style/font-awesome-4.2.0/css/font-awesome.css">
+        <link rel="stylesheet" href="/static/style/style2.css" >
+        <link rel="stylesheet"  href="/static/style/responsive.css" type="text/css" media="all">
+        <link rel="stylesheet" href="/static/css/header_style.css">
+
+        <!-- jasny bootstrap -->   
+        <link rel="stylesheet" href="/static/jasny-bootstrap/css/jasny-bootstrap.css">
+        <link rel="stylesheet" href="/static/css/aui-production.min.css" />
+        <link rel="stylesheet" href="/static/style/classy.css" />
+
+        <link rel="stylesheet" href="/static/test.css">
+        <!-- vmap --> 
+        <link rel="stylesheet" href="/static/vmap/jqvmap.css">
+
+        <!-- notifications --> 
+        <link rel="stylesheet" href="/static/notifications/css/jquery.gritter.css">
+
+        <!-- payement --> 
+        <link rel="stylesheet" href="/static/eldarion-ajax/js/eldarion-ajax.min.js">
+        <script src="//checkout.stripe.com/v2/checkout.js"></script>
+
+    {% endblock style %}  
+
+    {% block extra_style %} 
+      <link rel="stylesheet" href="/static/social.css">
+    {% endblock extra_style %}
+
+    {% block js %}
+
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/style/bootstrap/js/bootstrap.js"></script>
+        <!-- jasny --> 
+        <script src="/static/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+        <!-- vmap --> 
+        <script type='text/javascript' src="/static/vmap/jquery.vmap.js" ></script>         
+        <script type='text/javascript' src="/static/vmap/jquery.vmap.france.js" ></script>
+        <!-- notifications --> 
+        <script type='text/javascript' src="/static/notifications/js/jquery.gritter.min.js" ></script>
+
+        <!-- sharethis webservice --> 
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "fc960723-2a1c-4123-bacd-9e76284af85e", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+
+        <script>
+            $(function() {
+                $('body').on("click", '.change-card, .subscribe-form button[type=submit]', function(e) {
+                  e.preventDefault();
+                  var $form = $(this).closest("form"),
+                      token = function(res) {
+                        $form.find("input[name=stripe_token]").val(res.id);
+                        $form.trigger("submit");
+                      };
+
+                  StripeCheckout.open({
+                    key:         $form.data("stripe-key"),
+                    name:        'Payment Method',
+                    panelLabel:  'Add Payment Method',
+                    token:       token
+                  });
+
+                  return false;
+                });
+            });
+        </script>
+
+    {% endblock js %}
+
+     <!-- dajaxice imports --> 
+    <script src="/static/js/dajax/jquery.dajax.core.js" type="text/javascript"></script>
+      {% dajaxice_js_import %}
+    <!-- dajaxice imports ends --> 
+
+    <script type="text/javascript">
+      function send_form(){
+          Dajaxice.car_shop.send_form(Dajax.process,{'form':$('#search_form').serialize(true)});
+      }
+    </script>
+
+    <script type="text/javascript">
+      function text_send_form(){
+          Dajaxice.car_shop.text_send_form(Dajax.process,{'form':$('#textsearchform').serialize(true)});
+      }
+    </script>
+
+    {% block extra_head %}{% endblock %}
+      {% block extra_script %}{% endblock %}
+
+    </head>
+
+    <body>
+  <br/>
+
+{% block topheader %}
+    <!-- upper menu --> 
+  <header class='top_header'>
+
+    <div id="scsl-header" class="header first">
+    <div id="scsl-banner" class="container">
+        <a href="/">
+            <img src="/static/images/logo1_dark.png" alt="logo" class="scsl-logo" />
+        </a>
+    </div>
+</div>
+<div id="navigation" class="yamm">
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed btn-primary" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bar"></span>
+                    <span class="fa fa-bar"></span>
+                    <span class="fa fa-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">
+                    <img src="/static/images/logo1.png" alt="SC State Library" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+             
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown yamm-fw">
+                        <a href="/" class="dropdown-toggle" >
+                        <i class="fa fa-home"></i>   Principale 
+                        </a>
+                    </li>
+
+                    {% if request.user.is_authenticated %}
+
+                      {% if user|in_group:"employer" %}
+
+                        <li class="dropdown yamm-fw">
+                            <a href="/deposer_offre" class="dropdown-toggle" >
+                                <i class="fa fa-list-alt"></i> Deposer Offre
+                            </a>
+                        </li>
+                            
+                      {% endif %}
+                      
+                    {% endif %}
+
+                    <li class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle" >
+                            <i class="fa fa-folder-open"></i>Infos
+                        </a>
+                    </li>
+
+                    <li class="dropdown yamm-fw">
+                        <a href="/search" class="dropdown-toggle" >
+                            <i class="fa fa-search"></i> Recherche
+                        </a>
+                    </li>
+
+                    <li class="dropdown yamm-fw">
+                         <a href="/contact">
+                          <i class="fa fa-pencil"></i> Contact 
+                        </a>
+                    </li>
+
+                </ul>
+
+                <ul class="nav navbar-nav right-nav">
+
+                  {% if request.user.is_authenticated %}
+
+                      {% if user|in_group:"candidate" %}
+                          <li> <a href="/candid_profile"><i class="fa fa-user sml-size"></i> : {{ request.user.username }}</a> </li>
+                      {% else %}
+                          <li>  <a href="/emp_profile"><i class="fa fa-user sml-size"></i>  : {{ request.user.username }}</a> </li>
+                      {% endif %}
+
+                      <li> <a href="/accounts/logout/"> <i class="fa fa-sign-out"></i> {% trans "Deconnexion" %}</a> </li>
+
+                      {% if request.user.is_superuser %}
+                          <li> <a href="/admin/"> <i class="fa fa-dashboard"></i> {% trans "Admin" %}</a> </li>
+                      {% endif %}
+
+                {% else %}
+                         <li> <a href="/accounts/login/"> <i class="fa fa-sign-in"></i> {% trans "Connexion" %}</a> </li>
+                {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </header>
+
+  <a href="#" class="mobile-sign">{% trans "S'enregistrer" %}</a> 
+  <!-- upper menu ends --> 
+
+<div class="main2 desktop chrome right-sidebar">
+  <div class="container">
+      <div class="row">
+
+{% endblock topheader %}
+        
+  {% block middlecontent %}
+    
+  {% endblock middlecontent %}
+  
+  
+  <br/>
+
+  {% block sidecontent %}
+    {% cache 3600 base_sidecontent_html %}
+      {% include "./parts/base_sidecontent.html" %}  
+    {% endcache %}
+  {% endblock sidecontent %} 
+
+      </div> <!-- end row -->
+        
+        <div class="clear"></div>
+      </div> <!-- end container --> 
+    </div>  <!-- end main2 -->
+  <br/> 
+    
+
+{% block footer %}
+
+   <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            
+            <br/>
+            <div class="padd">
+              
+              <ul class="horizontal full four ruled padded center margin-top-big">
+                <li><h6>{% trans "Home" %}</h6></li>
+                <li><h6>{% trans "Deposer annonce" %}</h6></li>
+                <li><h6>{% trans "Recherche" %}</h6></li>
+                <li><h6>{% trans "Contact" %}</h6></li>
+              </ul>
+
+              <hr/>
+              Copyright &copy; 2014 - <a href="#">Speed Job</a> | Designed by <a href="#">Med Reda</a>
+            </div>
+
+            {% if msg %}
+              <script type="text/javascript">
+              $.gritter.add({
+
+                  image: '/static/images/logo-user.png',
+                  // (string | mandatory) the heading of the notification
+                  title: 'Notification',
+                  // (string | mandatory) the text inside the notification
+                  text: '{{ msg }}',
+                  // get light colors
+                  class_name: 'gritter-light'
+                });
+              </script>
+            {% endif %}
+            
+          </div>
+
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </footer>
+      
+    {% endblock footer %} 
+
+    {% block extra_js %}
+      
+    {% endblock extra_js %}
+
+
+    </body>
+</html>

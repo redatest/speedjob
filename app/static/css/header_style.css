@@ -1,0 +1,246 @@
+
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  color: #666;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  font-family: 'Oswald','Kufi' !important;
+  font-size: 16px !important;
+  color: #111869 !important;
+  width: 100%;
+  min-height: 100px;
+  background-color: #fff;
+  /*position: fixed;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  z-index: 100001;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 1000px) {
+  header {
+    position: relative;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1050px;
+  padding: 0 20px;
+  clear: both;
+  position: relative;
+}
+@media (max-width: 1000px) {
+  .container {
+    padding: 100px 0 0;
+  }
+}
+
+nav {
+  display: block;
+  position: relative;
+}
+@media (max-width: 1000px) {
+  nav {
+    display: none;
+    left: 0;
+  }
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+@media (max-width: 1000px) {
+  nav ul {
+    background-color: #eee;
+  }
+}
+nav ul li {
+  display: inline-block;
+  margin: 40px 14px;
+}
+@media (max-width: 1000px) {
+  nav ul li {
+    width: 100%;
+    border-top: 1px solid #ddd;
+    margin: 0 !important;
+    /* Sorry */
+  }
+}
+nav ul li a {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: 1px;
+  transition: all .3s;
+}
+@media (max-width: 1000px) {
+  nav ul li a {
+    padding: 1em 0;
+    display: block;
+  }
+  nav ul li a:hover {
+    background-color: #ddd;
+  }
+}
+nav ul li a:hover {
+  color: #000;
+  transition: all .3s;
+}
+
+nav ul li:nth-child(3) {
+  margin-right: 160px;
+}
+@media (max-width: 1000px) {
+  nav ul li:nth-child(3) {
+    margin-right: 180px;
+  }
+}
+
+.social {
+  position: absolute;
+  top: 0;
+  left: 3%;
+  list-style: none;
+  margin: 40px 0;
+}
+
+.social li {
+  margin-right: 5px !important;
+}
+
+.social li img {
+  max-width: 65%;
+  top: -3px;
+}
+
+.social .arabic{
+  /*background: url(../img/ar_flag.png);*/
+}
+
+.social .english{
+  /*color: blue;*/
+  /*background: url(../img/us_flag.png);*/
+}
+
+@media (max-width: 1000px) {
+  .social {
+    left: 20px;
+  }
+}
+.social li {
+  display: inline-block;
+  float: left;
+  margin-right: 15px;
+}
+
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 54%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  line-height: 70px;
+  text-align: center;
+  margin-left: -35px;
+  background-color: #333;
+  color: white;
+  font-size: 2em;
+}
+
+.sign {
+  padding: 0.8em 1.2em;
+  position: absolute;
+  top: 10px;
+  right: 1%;
+  font-size: 13px !important;
+  background-color: #2e76da;
+  color: white;
+  box-shadow: inset 0px -3px 0px #1c539e;
+  transition: all 0.3s;
+
+}
+
+.sign li{
+  display: block;
+}
+
+.sign li a{
+  color: #fff;
+}
+
+@media (max-width: 1000px) {
+  .sign {
+    display: none;
+  }
+}
+.sign:hover {
+  background-color: #1c539e;
+  transition: all .3s;
+}
+
+.mobile {
+  display: none;
+  position: absolute;
+  right: 5%;
+  top: 0;
+  width: 40px;
+  margin: 36px 0;
+  cursor: pointer;
+}
+@media (max-width: 1000px) {
+  .mobile {
+    display: block;
+  }
+}
+.mobile span {
+  height: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  display: block;
+  background-color: #aaa;
+  margin: 3px 0;
+}
+
+.mobile-sign {
+  display: none;
+  position: relative;
+  padding: 0.8em 1.2em;
+  background-color: #2e76da;
+  color: white;
+  box-shadow: inset 0px -3px 0px #1c539e;
+  transition: all 0.3s;
+  text-align: center;
+}
+.mobile-sign:hover {
+  background-color: #1c539e;
+}
+@media (max-width: 1000px) {
+  .mobile-sign {
+    display: block;
+  }
+}
+
+@media all and (max-width: 1150px) {
+  nav ul li {
+    margin: 40px 10px;
+  }
+
+  .social {
+    left: 5%;
+  }
+
+  .sign {
+    right: 20px;
+  }
+}

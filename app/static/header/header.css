@@ -1,0 +1,393 @@
+
+/* heder icons */
+.dropdown.yamm-fw i.glyph-icon, .nav.navbar-nav.right-nav i.glyph-icon{
+  color: rgba(0, 0, 0, 0.48);
+  font-size: 20px;
+  height: 20px;
+  padding: 3px;
+}
+
+/* heder icons ends */
+
+
+a, a:hover, a:link, a:active, a:visited {
+    /*color: #2C8DDA;*/
+}
+.element-invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus, #s-lg-tabs-container .nav-tabs > li > a, #s-lg-tabs-container .nav-pills > li > a {
+    /*background-color: #005395;*/
+}
+.header {
+    background: #fff;
+    /*height: 100px;*/
+    /*line-height: 100px;*/
+}
+
+.header .scsl-logo {
+    width: 333px;
+    height: 100px;
+}
+
+/* list group custom */
+.list-group-item{
+  color: rgb(86, 86, 86);
+  display: table-cell;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+  border: 1px solid rgba(51, 51, 51, 0.43);
+}
+/* list group custom ends */
+
+b{
+  font-weight: bolder !important;
+}
+
+
+/* icons */
+
+.calendar-text { 
+  margin-top: .3em; 
+  font-size :0.3em;
+  color     : gray;
+}
+
+[class^="fa-"].sml-font, [class*=" fa-"].sml-font {
+  font-size: 1em;;
+}
+
+[class^="fa-"].mid-size, [class*=" fa-"].mid-size {
+  font-size: 22px;
+}
+
+[class^="fa-"].sml-size, [class*=" fa-"].sml-size {
+  font-size: 17px !important;
+}
+
+[class^="fa-"].min-size, [class*=" fa-"].min-size {
+  font-size: 15px !important;
+}
+
+[class^="fa-"].white, [class*=" fa-"].white {
+  font-size: 22px;
+  color: rgba(0, 136, 204, 0.57);
+}
+
+[class^="fa-"].white-ns, [class*=" fa-"].white-ns {
+  color: #fff;
+}
+
+[class^="fa-"].blue, [class*=" fa-"].blue {
+  font-size: 22px;
+  color: rgba(0, 136, 204, 0.57);
+}
+
+[class^="fa-"].blue-ns, [class*=" fa-"].blue-ns {
+  
+  color: rgba(0, 136, 204, 0.57);
+}
+
+[class^="fa-"].orange, [class*=" fa-"].orange {
+  font-size: 22px;
+  color: #d26000;
+}
+
+[class^="fa-"].orange-ns, [class*=" fa-"].orange-ns {
+  color: #d26000;
+}
+
+[class^="fa-"].fb-blue, [class*=" fa-"].fb-blue {
+  font-size: 22px;
+  color: #3B5999;
+}
+
+[class^="fa-"].fb-blue-ns, [class*=" fa-"].fb-blue-ns {
+  color: #3B5999;
+}
+
+[class^="fa-"].fb-darkblue, [class*=" fa-"].fb-darkblue {
+  font-size: 22px;
+  color: rgb(0, 0, 139);
+}
+
+[class^="fa-"].fb-darkblue-ns, [class*=" fa-"].fb-darkblue-ns {
+  color: rgb(0, 0, 139);
+}
+
+
+[class^="fa-"].green, [class*=" fa-"].green {
+  font-size: 22px;
+  color: rgba(8, 204, 0, 0.68)
+}
+[class^="fa-"].dark-green, [class*=" fa-"].dark-green {
+  font-size: 22px;
+  color: #009281
+}
+
+[class^="fa-"].gray, [class*=" fa-"].gray {
+  font-size: 22px;
+  color: gray;
+}
+
+[class^="fa-"].gray-ns, [class*=" fa-"].gray-ns {
+  color: gray;
+}
+
+
+[class^="fa-"].red, [class*=" fa-"].red {
+  font-size: 22px;
+  color: rgba(204, 90, 0, 0.57);
+}
+
+[class^="fa-"].red-ns, [class*=" fa-"].red-ns {
+  color: rgba(204, 90, 0, 0.57);
+}
+
+[class^="fa-"].rose, [class*=" fa-"].rose {
+  font-size: 22px;
+  /*margin: 23px;*/
+  color: rgba(172, 71, 71, 0.84);
+}
+
+[class^="fa-"].rose-ns, [class*=" fa-"].rose-ns {
+  color: rgba(172, 71, 71, 0.84);
+}
+
+
+/* icons ends */
+
+#navigation .btn-primary {
+  color: #ffffff;
+  /*background-color: #005395 !important;*/
+  border-color: #00457c !important;
+  background-image: none !important;
+}
+#navigation .btn-primary:hover,
+#navigation .btn-primary:focus,
+#navigation .btn-primary:active,
+#navigation .btn-primary.active,
+#navigation .open > .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #003762 !important;
+  border-color: #00233e !important;
+}
+#navigation .btn-primary:active,
+#navigation .btn-primary.active,
+#navigation .open > .dropdown-toggle.btn-primary {
+  background-image: none !important;
+}
+
+/* Navbar Style */
+
+#navigation {
+    /*border-bottom: 2px solid #238db4 !important;  /*  blue bar under the menu */*/
+}
+
+.navbar {
+  border: 0;
+  margin-bottom: 0;
+}
+
+/*  blue bar under the menu */
+#navigation {
+  text-decoration: none;
+}
+
+#navigation .nav li a {
+  line-height: 22px;
+  padding: 15px 5px;
+}
+
+#navigation .nav .dropdown-toggle:hover .caret, .nav .dropdown-toggle:focus .white-caret {
+  border-bottom-color: #fff;
+  border-top-color: #fff;
+}
+
+#navigation .nav .open a.dropdown-toggle {
+  /*background-color: #23445e;*/
+  color: #fff;
+}
+
+/* menu elements */
+#navigation .nav .dropdown {  
+  font-family: Serif, Impact, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+#navigation .nav .dropdown a:hover,
+#navigation .nav .dropdown a:focus {
+  /*background-color: #08C;*/
+  text-decoration: underline;
+  color: #08C;
+}
+#navigation .nav .dropdown p {
+  font-family: Serif, Helvetica, Arial, sans-serif;
+  font-size: .9em;
+}
+
+#navigation .nav .dropdown h4 {
+  margin-bottom: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #11202C;
+  font-size: 1.5em;
+}
+
+#navigation .dropdown {
+  border-top: 1px solid #0279d7;
+  border-bottom: 1px solid #23445e;
+}
+
+/* logo */
+#navigation .navbar-brand {
+  display: inline-block;
+  padding: 10px 0 0 15px;
+}
+#navigation .navbar-brand img {
+  height: 30px;
+  width: auto;
+}
+#navigation .navbar-nav {
+  background-color: #0161ad;
+  margin-bottom: 0;
+}
+#navigation .navbar-collapse {
+  background-color: #23445e;
+}
+
+/* menu mobile button */
+#navigation .navbar-toggle {
+  color: #fff;
+  border: 0;
+}
+#navigation .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+#navigation .navbar-toggle:hover,
+#navigation .navbar-toggle:focus {
+  background-color: #23445e;
+}
+
+@media (min-width: 768px) {
+  #navigation {
+    
+  }
+  #navigation .nav .dropdown {
+    font-size: 1em;
+  }
+  #navigation .nav .dropdown a {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  #navigation .dropdown {
+    border-top: 0;
+    border-bottom: 0;
+  }
+  #navigation .navbar-brand {
+    display: none;
+  }
+  #navigation .btn-toggle {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    margin-top: 0;
+    display: inline;
+    margin-left: -5px;
+  }
+  #navigation .navbar-nav {
+    background-color: transparent;
+    margin-top: 0;
+  }
+  #navigation .navbar-collapse {
+    background-color: transparent;
+  }
+}
+@media (min-width: 992px) {
+  #navigation .nav .dropdown {
+    font-size: 1.2em;
+  }
+  #navigation .nav .dropdown a {
+    padding-left: 0px;
+    padding-right: 25px;
+  }
+}
+@media (min-width: 1200px) {
+  #navigation .btn-toggle {
+    display: none;
+  }
+}
+.navbar-default {
+  background-color: transparent;
+  border-color: none;
+}
+.navbar-default .navbar-brand {
+  color: #ffffff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #e6e6e6;
+  background-color: transparent;
+}
+.navbar-default .navbar-text {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #333333;
+  background-color: transparent;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #555555;
+  background-color: rgba(0, 0, 0, 0);
+}
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}
+.navbar-default .navbar-toggle {
+  border-color: #dddddd;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #dddddd;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #888888;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: none;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: rgba(0, 0, 0, 0);
+  color: #555555;
+}
+.yamm .nav,
+.yamm .collapse,
+.yamm .dropup,
+.yamm .dropdown {
+  position: static;
+}
+.yamm .container {
+  position: relative;
+}
+
+.right-nav{
+  float: right !important;
+}
+/* End Navbar Style */

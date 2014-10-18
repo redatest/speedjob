@@ -1,0 +1,111 @@
+{% extends "sitebase.html" %}
+
+{% load dajaxice_templatetags %}
+
+{% load i18n %}
+
+{% block extra_style %}
+  <link href="/static/style/blog-style.css" rel="stylesheet">
+{% endblock extra_style %}
+
+{% block middlecontent %}
+
+  <div class="col-sm-8">
+
+  <br/>
+
+  <div class="panel panel-default">
+    <div class="panel-heading"> {% trans "Last News" %} </div>
+    <div class="panel-body">
+
+      <!-- article 1 --> 
+      {% for i in contacts %}
+
+          <div class="blog-artical">
+          <div class="blog-artical-head">
+            
+            <img class="artical-img img-thumbnail" src="{{ i.img.url }}"  height="100px"/>
+            <a class="artical-date" href="#"><span>{{ i.created.day }}</span><label>{{i.created|date:"M" }}</label></a>
+          </div>
+          <div class="artical-info">
+            <a href="#"><h4> {{ i.title }} </h4></a>
+            {{ i.summary|safe }}
+          </div>
+          <div class="artical-related-info">
+            <div class="artical-related-info-row">
+              
+              <ul class="artical-related-info-row-right">
+                <li><a class="author" href="javascript:void(0)">Admin</a></li>
+                <li><a class="articl-readmore" href="{{ i.get_absolute_url }}">{% trans "Read More" %}</a></li>
+              </ul>
+
+              <div class="clear"> </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- article separation --> 
+        <br/>
+      <br/>
+
+      {% endfor %}
+      <!-- end article 1 --> 
+      
+    </div>
+    <!-- end panel body --> 
+    
+  </div>
+
+  <!-- pagination  -->
+  <div class="panel panel-default">
+
+    <div class="panel-body">
+
+      <div class="page-numbers">
+        <ul>
+
+          {% if contacts.has_previous %}
+          <li>
+            <a class="prev" href="?page={{ contacts.previous_page_number }}">
+              <i class="prev"></i>
+            </a>
+          </li>
+          {% endif %}
+
+          <li>
+            <a href="javascript:void(0)"> {% trans "page" %} &nbsp;{{ contacts.number }} / {{ contacts.paginator.num_pages }} </a>
+          </li>
+          
+          {% if contacts.has_next %}
+          <li>
+            <a class="next" href="?page={{ contacts.next_page_number }}">
+              <i class="next"></i>
+            </a>
+          </li>
+          {% endif %}
+
+          <div class="clear"></div>
+        </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+<!-- pagination end   -->
+
+
+<!-- google ads -->       
+<div class="panel panel-default">
+ <div class="panel-body">
+   <div class="col-sm-12">
+     <img src="http://placehold.it/670x70" alt="placeholder image" class='img-responsive'>
+   </div>
+ </div>
+</div>
+  
+</div> <!-- end span8 -->
+{% endblock middlecontent %}
+
+<br/>
+

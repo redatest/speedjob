@@ -1,0 +1,342 @@
+/* car items tiles  */
+
+
+.btn.tile-button {
+    display: block;
+    text-align: center
+}
+.bg-gray-alt.btn.tile-button:hover, .bg-gray.btn.tile-button:hover, .bg-white.btn.tile-button:hover .tile-header {
+    color: #000
+}
+.tile-header {
+    padding: 10px;
+    font-size: 14px;
+    
+    background: rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(0, 136, 204, 0.38);
+    color: #3a4049 !important;
+}
+.tile-content-wrapper {
+    padding: 10px 10px 0px;
+    position: relative;
+    overflow: hidden
+}
+.tile-content {
+    font-size: 35px;
+    text-align: right;
+    line-height: 30px;
+    color: rgba(104, 91, 91, 0.89) !important;
+
+}
+.tile-content span {
+    font-size: 25px;
+    -moz-opacity: .7;
+    filter: alpha(opacity: 70);
+    opacity: .7
+}
+.tile-content-wrapper small {
+    -moz-opacity: .7;
+    filter: alpha(opacity: 70);
+    opacity: .7;
+    text-align: right;
+    font-size: 14px;
+    display: block
+}
+.tile-content-wrapper>.glyph-icon {
+    position: absolute;
+    font-size: 65px;
+    height: 70px;
+    line-height: 70px;
+    top: 50%;
+    margin-top: -40px;
+    -moz-opacity: .3;
+    filter: alpha(opacity: 30);
+    opacity: .3;
+    left: 15px
+}
+.tile-footer {
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, .1);
+    text-align: left
+}
+.tile-footer .glyph-icon {
+    float: right
+}
+.tile-button-alt .tile-header {
+    padding: 0px 10px;
+    text-align: left
+}
+.tile-button-alt .tile-content-wrapper>.glyph-icon {
+    font-size: 35px;
+    margin-top: -36px
+}
+
+.tile-content-meta{
+	font-size: 16px !important;
+}
+
+
+.float-left {
+    float: left!important
+}
+.float-right {
+    float: right!important
+}
+.float-none {
+    float: none!important
+}
+
+.clear {
+    clear: both
+}
+
+.display-block {
+    display: block!important;
+    position: relative!important
+}
+
+.icon-med {
+    -moz-opacity: .09;
+    filter      : alpha(opacity: .09);
+    opacity     : .6;
+    position    : absolute;
+    font-size   : 50px;
+    /*right     : 33%;*/
+    /*top       : 70%;*/
+    height      : 50px;
+    line-height : 29px;
+    width       : 50px;
+    margin-top  : 0px;
+    color       :#8AA2AD;
+}
+
+.icon-big {
+    -moz-opacity: .09;
+    filter: alpha(opacity: .09);
+    opacity: .09;
+    position: absolute;
+    font-size: 140px;
+    right: 33%;
+    top: 40%;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    margin-top: 0px;
+}
+
+.icon-bigger {
+    -moz-opacity: .09;
+    filter      : alpha(opacity: .09);
+    opacity     : .09;
+    position    : absolute;
+    font-size   : 400px;
+    right       : 170px;
+    top         : 75%;
+    height      : 50px;
+    line-height : 50px;
+    width       : 50px;
+    margin-top  : -50px;
+}
+
+span.btn.btn-default.btn-file{
+    margin-left: 20%;
+    font-family: Oswald, sans-serif;
+    font-size: 12px;
+}
+
+div.fileinput.fileinput-new{
+    margin-left: 4%;    
+    margin-top: 2%;
+}
+
+/*.form-control{
+    border-radius: 1px;
+    border: 1px solid rgba(93, 107, 146, 0.44);
+    font-family: Oswald, sans-serif;
+    font-size: 12px;
+
+    border: 1px solid #bdbec0;
+    border-bottom-color: #a3a4a7;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    color: #333333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: #f0f1f6;
+    background-image: -moz-linear-gradient(top, #fafbfe, #e0e3ea);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafbfe), to(#e0e3ea));
+    background-image: -webkit-linear-gradient(top, #fafbfe, #e0e3ea);
+    background-image: -o-linear-gradient(top, #fafbfe, #e0e3ea);
+    background-image: linear-gradient(to bottom, #fafbfe, #e0e3ea);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffafbfe', endColorstr='#ffe0e3ea', GradientType=0);
+    border-color: #e0e3ea #e0e3ea #b2bacb;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 24px;
+}
+*/
+
+.controls select{
+    display: inline-block;
+    /*border: 2px solid #bbb !important;*/
+    padding: 4px 3px 3px 5px;
+    margin: 0;
+    font: inherit;
+    outline:none; /* remove focus ring from Webkit */
+    line-height: 1.2;
+    background: #f8f8f8;
+    
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.form-input select{
+    display: inline-block;
+    /*border: 2px solid #bbb !important;*/
+    padding: 4px 3px 3px 5px;
+    margin: 0;
+    font: inherit;
+    outline:none; /* remove focus ring from Webkit */
+    line-height: 1.2;
+    background: #f8f8f8;
+    
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.form-input select:focus{
+    -webkit-box-shadow: 0 0 2px 1px #08C;
+    -moz-box-shadow: 0 0 2px 1px #08C;
+    box-shadow: 0 0 2px 1px #08C;
+}
+
+.form-horizontal .control-label {
+    font-family: Oswald, sans-serif;
+    font-size: 12px
+}
+
+.thumbnail{
+    border: 2px solid rgba(93, 107, 146, 0.44);   
+    font-family: Oswald, sans-serif;
+    font-size: 12px
+}
+
+.form-input select{
+    border: 1px solid rgba(93, 107, 146, 0.44);
+    font-family: Oswald, sans-serif;
+    font-size: 12px
+}
+
+input[type="text"]{
+    border: 1px solid rgba(93, 107, 146, 0.44); 
+    font-family: Oswald, sans-serif;
+    font-size: 12px
+}
+
+/* car item tiles ends */
+
+/* car edit table */
+
+.dashboard-panel {
+    text-align: center
+}
+
+div.content-box-wrapper{
+    font-family: Oswald, sans-serif;
+    font-size: 12px;
+    word-spacing: 2px;
+    padding: 10px;
+}
+
+.dashboard-panel.content-box .content-box-wrapper {
+    padding: 15px 0 0;
+    margin: 0 15px 15px;
+    overflow: hidden;
+    
+}
+.dashboard-panel canvas {
+    display: block!important;
+    margin: 0 auto;
+}
+.dashboard-panel .header {
+    font-size: 14px;
+    line-height: 1.3em;
+    padding: 0 0 5px;
+    text-align: right;
+}
+.dashboard-panel .header .glyph-icon {
+    width: 20px;
+    display: block;
+    float: left
+}
+.dashboard-panel .header span {
+    font-size: 12px;
+    display: block;
+    font-weight: 700;
+    -moz-opacity: .8;
+    filter: alpha(opacity: 80);
+    opacity: .8
+}
+.dashboard-panel .heading {
+    font-weight: 700;
+    font-size: 15px;
+    float: left
+}
+.dashboard-panel .center-div {
+    margin: 5px auto -15px
+}
+
+.content-box-header>.ui-tabs-nav {
+    float: right;
+    border: 0;
+    padding: 0;
+    margin: 2px 0 0
+}
+.content-box-header>.ui-tabs-nav li>a {
+    background: 0;
+    border: 0;
+    height: 37px;
+    line-height: 36px;
+    color: rgba(255, 255, 255, .7);
+    margin: 0 2px
+}
+.content-box-header>.ui-tabs-nav li>a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, .2)
+}
+.content-box-header>.ui-tabs-nav li.ui-tabs-active>a {
+    background: #fff;
+    line-height: 37px
+}
+
+.dashboard-panel.content-box.remove-border.bg-green{
+	color: #475974;
+	background: #e9ecf1;
+    font-family: Oswald, sans-serif;
+    font-size: 12px
+}
+.dashboard-panel.content-box.remove-border.bg-green > .table {
+background: #fff;
+color: #444;
+}
+
+div.content-box-wrapper > .header{
+	background: #e9ecf1 !important; 	
+}
+
+.dashboard-panel .button-pane {
+	background: rgba(0,0,0,.1)!important;
+}
+/* car edit table ends */
+

@@ -1,0 +1,54 @@
+ul {
+    list-style: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+	margin: 10px;
+}
+
+#wrap {
+    min-height: 100%;
+}
+
+.navbar {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	position: relative;
+}
+
+.logo {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: -25px;
+	left: 10px;
+}
+
+.navbar .brand {
+	margin: 0 0 0 90px;
+}
+
+.subscription-price {
+    font-size: 50px;
+    line-height: 60px;
+    color: #1964af;
+    position: relative;
+    top: 5px;
+}
+
+
+.form-horizontal {
+	position: relative;
+	margin: 40px 0 0 0;
+	padding-top: 60px;
+}
+
+.form-horizontal .logo {
+	left: 50%;
+	margin-left: -50px;
+	top: -40px;
+}

@@ -1,0 +1,141 @@
+{% extends "sitebase.html" %}
+{% load i18n dajaxice_templatetags cache %}
+
+{% block extra_style %}
+  <link rel="stylesheet" type="text/css" href="/static/social_bis.css"> 
+  <link href="/static/style/blog-style.css" rel="stylesheet">
+  <link href="/static/test.css" rel="stylesheet">
+{% endblock extra_style %}
+
+{% block middlecontent %}
+
+<div class="col-sm-8">
+  <br/>
+    
+    <div id="respo">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="fa-stack ">
+                  <i class="fa fa-square-o fa-stack-2x "></i>
+                  <i class="fa fa-list-ul fa-stack-1x "></i>
+          </span> 
+          {% trans "Toutes les offres" %} 
+        </div>
+        
+        <div class="panel-body-mod big-content">
+
+          {% for i in contacts %}
+
+          <div class="freelancer-list-item hoverable clearfix">
+                  
+                  <a class="span-2 freelancer-image" href="#">
+                    <!-- <img width="70" height="70" src="http://placehold.it/70x70" alt="image"> --> 
+                    <div class="stacked-icons">
+                      <span class="fa-stack fa-3x">
+                        <i class="fa fa-calendar-o fa-stack-17x white-ns"></i>
+                        <strong class="fa-stack-1x calendar-text">{{i.get_offerType_display}}</strong>
+                      </span>
+                    </div>
+                  </a>
+
+                <div class="span-70 boxmodelfix info">
+                    <h3>
+                        <a onclick="return false" class="freelancer left crop span-10" rel="nofollow" href="#"> 
+                          -
+                          {{i.title}}
+                        </a>
+                        <!-- <span class="cert cert-level1-small " data-level="1"> </span> --> 
+                        <div class="widget-member-prizes"></div>       
+                    </h3>
+
+                    <div class="job-title crop span-10">
+                        <i class="fa fa-tag sml-size dark-green"></i> {{ i.get_category_display }} | 
+                        <i class="fa fa-map-marker rose sml-size"></i> &nbsp; <strong>{{i.get_region_display}}</strong> |
+                        <span> <i class="fa fa-calendar sml-size blue"></i> &nbsp; {{i.created|date:"SHORT_DATE_FORMAT"}} </span> 
+                    </div>
+
+                    <div class="job-title crop span-10">
+                      <i class="fa fa-"></i> &nbsp; <span> {{ i.head_summary|safe }} </span>
+                    </div>
+
+                    <ul class="horizontal left">
+                      <li> <i class="fa fa-eye min-size"></i> <strong>{{ i.views }}</strong> fois</li>
+                    </ul>
+
+                    &nbsp;
+
+                    <span class="cert cert-level-small " data-level="612" data-tooltip-content="{{ i.tooltip_head_summary|safe }}" data-tooltip-pos="top" 
+                    title="{{ i.tooltip_head_summary|safe }}"></span>
+
+                    </div>
+
+                    <div class="span-3 last details freelancer">
+
+                     <a class="span-2 contact-member call-to-action button action-signup-show" rel="nofollow" href="{{i.get_absolute_url}}">
+                      Voir plus
+                    </a>  
+                   </div>
+            </div>
+            
+
+          {% endfor %}
+
+
+      <br/>
+      
+      <div class="page-numbers">
+          <ul>
+            
+            {% if contacts.has_previous %}
+            <li>
+              <a class="prev" href="?page={{ contacts.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">
+                <i class="prev"> </i>
+              </a>
+            </li>
+            {% endif %}
+            
+            <li> <a href="javascript:void(0)"> {% trans "page" %} &nbsp;{{ contacts.number }} / {{ contacts.paginator.num_pages }} </a> </li>
+            
+            {% if contacts.has_next %}
+            <li>
+              <a class="next" href="?page={{ contacts.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">
+                <i class="next"> </i>
+              </a>
+            </li>
+            {% endif %}
+            
+            <div class="clear">
+            </div>
+          </ul>
+        </div>
+
+        <br/>
+          
+        </div>
+
+
+    </div>
+    </div>
+
+    <!-- google ads -->
+    
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-12">
+          <img src="http://placehold.it/670x70" alt="placeholder image" class='img-responsive'>
+        </div>
+      </div>
+    </div>
+    
+</div>
+
+<!-- end span8 -->
+{% endblock middlecontent %}
+
+<br/>
+
+{% block sidecontent %}
+  {% cache 3600 search_sidecontent_html %}
+        {% include "./parts/search_sidecontent.html" %}
+  {% endcache %}
+{% endblock sidecontent %}

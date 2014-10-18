@@ -1,0 +1,166 @@
+{% extends "sitebase.html" %}
+{% load dajaxice_templatetags i18n group_check cache %}
+
+{% block extra_script %}
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $('#francemap').vectorMap({
+        
+          map: 'france_fr',
+          hoverOpacity: 0.5,
+          hoverColor: "#EC0000",
+          backgroundColor: "#ffffff",
+          color: "rgba(18, 127, 182, 0.4)",
+          borderColor: "#000000",
+          selectedColor: "#08C",
+          enableZoom: false,
+          showTooltip: true,
+
+            onRegionClick: function(element, code, region)
+            {
+                // var message = 'Région : "'+ region + '" || Id : "'+ code + '"';
+              var dict = {
+                    region:        code,
+                    category:     'all',
+                    offer:        'all',
+                    low_salary:   'all',
+                    high_salary:  'all',
+                    csrfToken :   $('input[name="csrfmiddlewaretoken"]').val()
+                    };
+                    var query_string = $.param( dict, true );
+                    window.location.href = '/map_search/?'+query_string;
+            }
+        });
+      });
+
+  </script>
+{% endblock extra_script %}
+
+    {% block middlecontent %}
+
+    
+
+    <div class="col-sm-8">
+      <br/>
+    
+    <div id="respo">
+
+      <!-- test ineractive map --> 
+      <div class="panel panel-default">
+        <div class="panel-heading">
+
+          <span class="fa-stack ">
+            <i class="fa fa-square-o fa-stack-2x "></i>
+            <i class="fa fa-binoculars fa-stack-1x "></i>
+          </span>
+          Recherche par région {{msg}}
+          
+        </div>
+
+        <div class="panel-body">
+          <div id="francemap" style="width: 300px; height: 300px; margin-left: 25%;"></div>
+        </div>
+      </div>
+      <!-- test ineractive map ends --> 
+
+      <div class="panel panel-default">
+     <div class="panel-heading"> 
+
+      <span class="fa-stack ">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-list-ul fa-stack-1x"></i>
+      </span>
+
+      {% trans "Les Dernieres offres" %} </div>
+     <div class="panel-body-mod">
+
+        {% if offers %}
+          
+            {% for i in offers %}
+              <div class="freelancer-list-item hoverable clearfix">
+                  <a class="span-2 freelancer-image" href="#">
+                    <!-- <img width="70" height="70" src="http://placehold.it/70x70" alt="image"> --> 
+                    <div class="stacked-icons">
+                      <span class="fa-stack fa-3x">
+                        <i class="fa fa-calendar-o fa-stack-17x white-ns"></i>
+                        <strong class="fa-stack-1x calendar-text">{{i.get_offerType_display}}</strong>
+                      </span>
+                    </div>
+                  </a>
+
+                <div class="span-70 boxmodelfix info">
+                    <h3>
+                        <a onclick="return false" class="freelancer left crop span-10" rel="nofollow" href="#"> 
+                          -
+                         {{i.title}}
+                        </a>
+                        <!-- <span class="cert cert-level1-small " data-level="1"> </span> --> 
+                        <div class="widget-member-prizes"></div>       
+                    </h3>
+
+                    <div class="job-title crop span-10">
+                        <i class="fa fa-tag sml-size dark-green"></i> {{ i.get_category_display }} | 
+                        <i class="fa fa-map-marker rose sml-size"></i> &nbsp; <strong>{{i.get_region_display}}</strong> |
+                        <span> <i class="fa fa-calendar sml-size blue"></i> &nbsp; {{i.created|date:"SHORT_DATE_FORMAT"}} </span> 
+                    </div>
+
+                    <div class="job-title crop span-10">
+                      <i class="fa fa-"></i> &nbsp; <span> {{ i.head_summary|safe }} </span>
+                    </div>
+
+                    <ul class="horizontal left">
+                      <li> <i class="fa fa-eye min-size"></i> <strong>{{ i.views }}</strong> fois</li>
+                    </ul>
+
+                    &nbsp;
+
+                    <span class="cert cert-level-small " data-level="612" data-tooltip-content="{{ i.tooltip_head_summary|safe }}" data-tooltip-pos="top" 
+                    title="{{ i.tooltip_head_summary|safe }}"></span>
+
+                    </div>
+
+                    <div class="span-3 last details freelancer">
+
+                     <a class="span-2 contact-member call-to-action button action-signup-show" rel="nofollow" href="{{i.get_absolute_url}}">
+                      Voir plus
+                    </a>  
+                   </div>
+            </div>
+
+        {% endfor %}
+
+        {% else %}
+
+            <p> Pas d'offres disponibles pour le moment </p>
+
+        {% endif %}
+
+
+     </div>
+   </div>
+      
+    </div>
+    
+    <div class="clearfix"></div>  
+   
+   
+    <!-- carousel events --> 
+
+   <div class="panel panel-default">
+     <div class="panel-body">
+       <div class="col-sm-12">
+         <img src="http://placehold.it/670x70&text=espace de publicite" alt="placeholder image" class='img-responsive'>
+       </div>
+     </div>
+   </div>
+      
+    </div> <!-- end span8 -->
+      
+    {% endblock middlecontent %}
+
+    <br/>
+
+
+
+

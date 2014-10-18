@@ -1,0 +1,234 @@
+{% extends "sitebase.html" %}
+{% load dajaxice_templatetags i18n  %}
+
+
+{% block middlecontent %}
+<div class="col-sm-8">
+  <br/>
+  <div id="respo">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="fa-stack ">
+          <i class="fa fa-square-o fa-stack-2x "></i>
+          <i class="fa fa-user fa-stack-1x "></i>
+        </span>
+        Mon profile
+      </div>
+
+        <div class="panel-body">
+        <br/>
+
+        <div class="col-sm-4">
+
+          <div class="list-group">
+            <a class="list-group-item no-hover" href="#"><i class="fa fa-file-image-o gray "></i>&nbsp; Avatar</a>
+            <div id="people-you-may-know" class="social-nav-list" style="max-width: 340px; padding: 0;">
+            <ul class="nav nav-list dividers">
+              <li class="nav-header">&nbsp;</li>
+          
+              <li class="nav-header">
+                  <div class="avatar">
+                    <img src="/static/img/user2.png" alt="avatar" class="img-thumbnail" width='100' height='100'>
+                  </div>
+              </li>
+              <br>
+          
+            </ul>
+          </div> <!-- end avatar -->   
+          </div>
+
+          <hr/>
+
+          <div class="list-group">
+                <a class="list-group-item no-hover" href="#"><i class="fa fa-wrench gray "></i> Edition</a>
+
+                <a class="list-group-item" href="/candid_profile_edit/{{ userinfo.id }}">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-square fa-stack-2x blue-ns"></i>
+                    <i class="fa fa-user fa-stack-1x fa-inverse white-ns"></i>
+                  </span>
+                  &nbsp; Profile
+                </a>     
+
+                <a class="list-group-item" href="/accounts/password/reset">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-square fa-stack-2x blue-ns"></i>
+                    <i class="fa fa-key fa-stack-1x fa-inverse white-ns"></i>
+                  </span>
+                  &nbsp; Mot de passe
+                </a>
+          </div>
+
+          <br>
+
+        </div>
+
+        <div class="col-sm-8">
+
+        <div class="social-box">
+
+          <div class="header">
+            <i class="fa fa-bullseye gray-ns"></i>
+              
+              <strong>Informations générales :</strong>
+            </div>
+
+          <div class="body">
+              
+              <dl class="dl-horizontal">
+                <dt>Nom d'utilisateur:</dt>
+                <dd>{{userinfo.user.username}}</dd>
+                <br>
+                <dt>Prénom:</dt>
+                <dd>{{userinfo.prenom}}</dd>
+                <br>
+                <dt>Nom de famille:</dt>
+                <dd>{{userinfo.last_name}}</dd>
+                <br>
+                <dt>Adresse</dt>
+                <dd>{{userinfo.adress}}</dd>
+                <br>
+                <dt>Secteur 1:</dt>
+                <dd>{{userinfo.get_sector1_display}}</dd>
+                <br>
+                <dt>Secteur 2:</dt>
+                <dd>{{userinfo.get_sector2_display}}</dd>
+                <br>
+                <dt>Secteur 3:</dt>
+                <dd>{{userinfo.get_sector3_display}}</dd>
+                <br>
+                <dt>Mobilité 1:</dt>
+                <dd>{{userinfo.get_mobility1_display}}</dd>
+                <br>
+                <dt>Mobilité 2:</dt>
+                <dd>{{userinfo.get_mobility2_display}}</dd>
+                <br>
+                <dt>Mobilité 3:</dt>
+                <dd>{{userinfo.get_mobility3_display}}</dd>
+                <br>
+                <dt>Disponibilité:</dt>
+                <dd>{{userinfo.get_disponibility_display}}</dd>
+                <br>
+                <dt>Status:</dt>
+                <dd>{{userinfo.get_status_display}}</dd>
+                <br>
+                <dt>Niveau d'etudes:</dt>
+                <dd>{{userinfo.get_study_level_display}}</dd>
+                <br>
+                <dt>Experience:</dt>
+                <dd>{{userinfo.get_experience_display}}</dd>
+                <br>
+                <dt>Contrat:</dt>
+                <dd>{{userinfo.get_contract_display}}</dd>
+                <br>
+                <dt>Période:</dt>
+                <dd>{{userinfo.get_period_display}}</dd>
+                <br>
+                <br>
+                <dt>Date d'enrregistrement:</dt>
+                <dd>{{ userinfo.user.date_joined }}</dd>
+                <br>
+                <br>
+                <dt>Dernier acces:</dt>
+                <dd>{{ userinfo.user.last_login }}</dd>
+                <br>
+              </dl>
+            </div>
+            
+        </div>  
+
+        <hr>
+            <div class="social-box span6">
+            <div class="header">
+              <h4 class="hidden-phone">Autres Infos</h4>
+
+              <div class="tools">
+                <ul id="myTab2" class="nav nav-tabs">
+                  <li class="active"><a class="active" href="#profile2" data-toggle="tab"><i class="fa fa-user"></i> Motivations</a></li>
+                  <li class=""><a href="#dropdown12" data-toggle="tab"><i class="fa fa-cog"></i> CV</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="body">
+              <div id="myTabContent2" class="tab-content" style="min-height: 280px;">
+                <div class="tab-pane fade active in" id="profile2">
+                  <p><strong>Motivations:</strong></p>
+                  <p> 
+                    
+                    {% if userinfo.motivations %}
+
+                      {% autoescape off %}
+                      {{ userinfo.motivations }}
+                    {% endautoescape %}
+
+                    {% else %}
+
+                      <div class="alert">
+                      <p class="lead">
+
+                        Le candidat n'a pas encore décrit ses motivations
+                        
+                      </p>
+                    </div>
+
+                    {% endif %}
+                    
+                  </p>
+                </div>
+                <div class="tab-pane fade" id="dropdown12">
+                  <p><strong>CV</strong></p>
+                  
+                  <div class="alert">
+                      <p class="lead">
+
+                        Le candidat n'a pas encore déposé son CV
+                        
+                      </p>
+                    </div>
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+    </div> <!-- end panel body -->  
+      
+    </div>
+
+</div>
+
+<div class="clearfix"></div>
+<!-- Authors word -->
+
+<div class="clear"></div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-sm-12">
+      <img src="http://placehold.it/670x70" alt="placeholder image" class='img-responsive'></div>
+  </div>
+</div>
+
+</div>
+<!-- end span8 -->
+{% endblock middlecontent %}
+<br/>
+
+{% block sidecontent %}
+  {% include "./parts/simple_sidecontent.html" %}
+{% endblock sidecontent %}
+
+{% block extra_js %}
+  <script>
+    $(window).bind("load resize slid.bs.carousel", function() {
+    var imageHeight = $(".active .holder").height();
+    $(".controllers").height( imageHeight );
+    console.log("Slid");
+  });
+  </script>
+{% endblock extra_js %}
