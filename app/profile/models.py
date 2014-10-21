@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, Group
 from registration.signals import user_registered
 
 from offre.models import Offer
+from payments.models import Customer
 from car_shop.random_unique import RandomPrimaryIdModel
 from car_shop.model_choices import *
 from django.db.models.signals import post_save
@@ -46,7 +47,36 @@ class Profile_emp(RandomPrimaryIdModel):
     presentation = models.TextField(verbose_name="Présentation",                null=True, blank=True)
 
     def __unicode__(self):
-        return unicode(self.user)    
+        return unicode(self.user)
+
+    def get_payement_status(self):
+        employer = self.user
+        try:
+            customer = Customer.objects.get(user=employer)
+            subscription = customer.current_subscription
+            status   = subscription.status
+
+        except Customer.DoesNotExist:    
+            return None
+
+        return status
+
+    def can_download(self):
+        employer = self.user
+        try:
+            customer = Customer.objects.get(user=employer)
+            subscription = customer.current_subscription
+            status   = subscription.status
+
+            if status == "active":
+                return True
+            elif subscription.status == "canceled" and subscription.is_period_current():
+                return True    
+
+        except Customer.DoesNotExist:    
+            return False
+
+        return False    
 
     def get_offers(self):
         offers = self.user.offer_set.all()

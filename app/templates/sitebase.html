@@ -5,7 +5,6 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
-
 <html lang="ar" class="csstransforms no-csstransforms3d csstransitions" xml:lang="ar" dir="{{direction}}"> 
 <!--<![endif]-->
     <head>
@@ -56,6 +55,8 @@
 
     {% endblock style %}  
 
+    {% block extra_css %} {% endblock %}
+
     {% block extra_style %} 
       <link rel="stylesheet" href="/static/social.css">
     {% endblock extra_style %}
@@ -77,27 +78,7 @@
         <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
         <script type="text/javascript">stLight.options({publisher: "fc960723-2a1c-4123-bacd-9e76284af85e", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
 
-        <script>
-            $(function() {
-                $('body').on("click", '.change-card, .subscribe-form button[type=submit]', function(e) {
-                  e.preventDefault();
-                  var $form = $(this).closest("form"),
-                      token = function(res) {
-                        $form.find("input[name=stripe_token]").val(res.id);
-                        $form.trigger("submit");
-                      };
-
-                  StripeCheckout.open({
-                    key:         $form.data("stripe-key"),
-                    name:        'Payment Method',
-                    panelLabel:  'Add Payment Method',
-                    token:       token
-                  });
-
-                  return false;
-                });
-            });
-        </script>
+        
 
     {% endblock js %}
 
@@ -203,6 +184,17 @@
                           <li> <a href="/candid_profile"><i class="fa fa-user sml-size"></i> : {{ request.user.username }}</a> </li>
                       {% else %}
                           <li>  <a href="/emp_profile"><i class="fa fa-user sml-size"></i>  : {{ request.user.username }}</a> </li>
+                              
+                          {% with request.user.customer.current_subscription as cur_sub %}
+
+                              {% if cur_sub.status == "active" or cur_sub.status == "canceled" and cur_sub.is_period_current %}
+                                <li>
+                                  <a href="#"><i class='fa fa-credit-card sml-size'></i>&nbsp;Paid</a>
+                                </li>
+                              {% endif %}
+                                          
+                          {% endwith %}            
+                          
                       {% endif %}
 
                       <li> <a href="/accounts/logout/"> <i class="fa fa-sign-out"></i> {% trans "Deconnexion" %}</a> </li>
@@ -260,7 +252,7 @@
         <div class="row">
           <div class="col-sm-12">
             
-            <br/>
+
             <div class="padd">
               
               <ul class="horizontal full four ruled padded center margin-top-big">

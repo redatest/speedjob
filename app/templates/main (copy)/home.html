@@ -1,0 +1,35 @@
+{% extends "app_base.html" %}
+
+{% block main_content %}
+
+	<div class='offset2'>
+		<div class='row-fluid'>
+			{% with subscription=request.user.customer.current_subscription %}
+				{% if subscription %}
+				<div class='span10'>
+					{% include 'payments/_subscription_status.html' %}
+					<div class='well'>
+						<p class='lead'>Current Plan: {{ subscription.plan_display }}</p>
+						{% if subscription.status == 'active' %}
+						<p class='lead'>
+							Actions:
+							<a href="{% url change_subscription %}" class='btn btn-primary'>Change Plan</a>
+							<a href="{% url change_card %}" class='btn btn-warning'>Change Card</a>
+							<a href="{% url cancel_subscription %}" class='btn btn-danger'>Cancel Plan</a>
+						</p>
+						{% endif %}
+					</div>
+				</div>
+				{% endif %}
+			{% endwith %}
+		</div>
+		
+		<div class="row-fluid">
+			<h2>Checkout.js with Bootstrap modals - <a class="btn btn-primary btn-success" href="{% url subscribe_modal %}">Payez</a></h2>
+		</div>
+
+	</div>
+	<br>
+	<br>
+
+{% endblock main_content %}

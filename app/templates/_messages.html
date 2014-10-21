@@ -1,14 +1,24 @@
 {% if messages %}
 <div class='alerts row-fluid'>
-	<div class="span6 offset3">
+	<div class="span7 offset2">
 		{% for message in messages %}
-		<div class='row-fluid alert {% if message.tags %}alert-{{ message.tags }}{% endif %}'>
-			<a class='close'>x</a>
-			<p>{{ message }}</p>
-		</div>
+			<script type="text/javascript">
+			  $.gritter.add({
+
+			      image: '/static/images/logo-user.png',
+			      // (string | mandatory) the heading of the notification
+			      title: 'Notification',
+			      // (string | mandatory) the text inside the notification
+			      text: '{{ message }}',
+			      // get light colors
+			      class_name: 'gritter-light'
+			    });
+			  </script>
 		{% endfor %}
 	</div>
 </div>
+
+
 {% endif %}
 
 <script>

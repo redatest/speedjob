@@ -1,11 +1,12 @@
 {% extends "main/payment/payment_base.html" %}
 
 {% block extra_content %}
-	{% include "main/modals/progress.html" with header="Processing Payment" sub_header="This shouldn't take more than a minute..." %}
 
-	{% include "main/modals/success.html" with header="Payment Successful!" success_message="You are being redirected to homepage..." %}
+	{% include "main/modals/progress.html" with header="traitement du paiement" sub_header="Cela ne devrait pas prendre plus d'une minute..." %}
 
-	{% include "main/modals/error.html" with sub_header="Your card was not charged." retry_label="Retry Payment" %}
+	{% include "main/modals/success.html" with header="paiement réussi!" success_message="Vous allez être redirigé vers la page d'accueil..." %}
+
+	{% include "main/modals/error.html" with sub_header="Votre carte n'a pas été débitée." retry_label="Réessayez paiement" %}
 {% endblock extra_content %}
 
 {% block extra_js %}

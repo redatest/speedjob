@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import logging
 
 from django.conf import settings
@@ -62,8 +63,8 @@ def subscribe_ajax(request):
 
     customer.update_card(stripe_token)
     customer.subscribe(plan_id)
-    messages.success(request, 'Your subscription is now active.')
-    return JSONResponse({'message': 'Subscription successful'})
+    messages.success(request, 'Votre abonnement est maintenant activé.')
+    return JSONResponse({'message': 'Abonnement réussi'})
 
 
 @require_POST
@@ -73,8 +74,8 @@ def change_plan_ajax(request):
     """"""
     plan_id = request.POST.get("plan_id", None)
     request.user.customer.subscribe(plan_id)
-    messages.info(request, 'Subscription plan changed to: %s' % settings.PAYMENTS_PLANS[plan_id]['name'])
-    return JSONResponse({'message': 'Subscription changed.'})
+    messages.info(request, 'Plan d\'abonnement est changé à : %s' % settings.PAYMENTS_PLANS[plan_id]['name'])
+    return JSONResponse({'message': 'Votre abonnement est changé.'})
 
 
 @require_POST
@@ -91,8 +92,8 @@ def change_card_ajax(request):
         if send_invoice:
             customer.send_invoice()
         customer.retry_unpaid_invoices()
-        messages.success(request, 'Card information was changed successfully.')
-        return JSONResponse({'message': 'Card was updated.'})
+        messages.success(request, 'Les informations de la carte ont été modifié avec succès.')
+        return JSONResponse({'message': 'Carte mise à jour.'})
     else:
         raise stripe.StripeError('Invalid Stripe token')
 
@@ -103,8 +104,8 @@ def change_card_ajax(request):
 def cancel_ajax(request):
     """"""
     request.user.customer.cancel(at_period_end=False)
-    messages.info(request, "You have unsubscribed successfully.")
-    return JSONResponse({'message': 'Cancellation successful.'})
+    messages.info(request, "Vous êtes désabonné avec succès.")
+    return JSONResponse({'message': 'Annulation réussie.'})
 
 
 class BaseStripeTemplateView(generic.TemplateView):
@@ -125,7 +126,7 @@ class BaseSubscribeView(BaseStripeTemplateView):
         """Redirect user to home if he already has an active subscription"""
         try:
             if self.request.user.customer.current_subscription.status == 'active':
-                messages.warning(request, "You already have an active paid subscription.")
+                messages.warning(request, "Vous avez déjà un abonnement actif et payé.")
                 return redirect('home')
         except ObjectDoesNotExist:
             pass

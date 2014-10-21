@@ -5,14 +5,14 @@
 {% endblock main_header %}
 
 {% block main_content %}
-	<p class="lead">You can change your current plan here.</p>
+	<p class="lead">Vous pouvez changer votre plan ici.</p>
 
 	<table class='table table-bordered table-striped table-hover'>
 		<thead>
 			<tr>
 				<th>Plan</th>
-				<th>Billing</th>
-				<th>Amount</th>
+				<th>Type</th>
+				<th>Prix</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -26,10 +26,10 @@
 
 				<td>
 					{% if request.user.customer.current_subscription.plan == plan.stripe_plan_id %}
-					<b>Current Plan</b>
+					<b>Plan Actuel</b>
 
 					{% else %}
-					<a class="planBtn btn btn-primary" data-plan-name="{{ plan.name }}" data-plan-id="{{ plan.stripe_plan_id }}" href="#">Change</a>
+					<a class="planBtn btn btn-primary" data-plan-name="{{ plan.name }}" data-plan-id="{{ plan.stripe_plan_id }}" href="#">Changer</a>
 					{% endif %}
 				</td>
 			</tr>
@@ -39,14 +39,14 @@
 
 	<div id="confirmModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-header text-center">
-			<h3>Change Plan</h3>
+			<h3>Changer de Plan</h3>
 		</div>
 		<div class="modal-body">
 			<br>
 			<div class="row-fluid">
 				<div class="span10 offset1 text-center">
-					<p>Do you really want to switch to <b><span id="planName"></span></b> plan?</p>
-					<p>Your card will be charged for the new plan and your previous subscription will be cancelled.</p>
+					<p>Voulez vous vraiment choisir le plan <b><span id="planName"></span></b> </p>
+					<p>Votre carte sera débitée pour le nouveau plan et votre ancien abonnement sera annulé automatiquement.</p>
 				</div>
 				<form id="changePlanForm" action="{% url change_plan_ajax %}" method="POST">
 					{% csrf_token %}
@@ -56,17 +56,19 @@
 		</div>
 		<div class="modal-footer">
 			<div class='text-center'>
-				<a id="confirm-yes" class="btn btn-primary" href="#">Yes</a>
-				<a id="confirm-no" class="btn btn-default" href="#">No</a>
+				<a id="confirm-yes" class="btn btn-primary" href="#">Oui</a>
+				<a id="confirm-no" class="btn btn-default" href="#">Non</a>
 			</div>
 		</div>
 	</div>
 
-	{% include "main/modals/progress.html" with header="Changing Subscription Plan" sub_header="Waiting for response from payment gateway" %}
+	{% include "main/modals/progress.html" with header="Changement de Plan" sub_header="Attent de la réponse de la passerelle du paiement" %}
 
-	{% include "main/modals/error.html" with sub_header="Please contact our support team." %}
+	{% include "main/modals/error.html" with sub_header="Veuillez contacter l'équipe technique." %}
 
-	{% include "main/modals/success.html" with success_message="Your subscription was changed successfully."%}
+	{% include "main/modals/success.html" with success_message="Le changement de plan a été éffectué avec succée."%}
+
+	<br>
 
 {% endblock main_content %}
 

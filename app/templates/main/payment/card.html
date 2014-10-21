@@ -1,25 +1,25 @@
 {% extends "app_base.html" %}
 
 {% block main_header %}
-	<h1 class='text-center'>Change Card</h1>
+	<h1 class='text-center'>Changer de Carte</h1>
 {% endblock main_header %}
 
 {% block main_content %}
 	<div class='span6 offset3 text-center'>
-		<p class="lead">You can change your payment details here.</p>
-		<p class="lead">Current card is a <strong>{{ request.user.customer.card_kind }}</strong> ending in the digits <strong>{{ request.user.customer.card_last_4 }}</strong>.</p>
+		<p class="lead">Vous pouvez modifier vos informations de paiement ici.</p>
+		<p class="lead">La carte actuelle est de type <strong>{{ request.user.customer.card_kind }}</strong> avec les quatre derniers chiffres <strong>{{ request.user.customer.card_last_4 }}</strong>.</p>
 
 		<br>
-		<a id='changeCardButton' class="btn btn-warning btn-large"href="#">Change Card</a>
+		<a id='changeCardButton' class="btn btn-warning btn-large"href="#">Changer de Carte</a>
 
 		<br>
 		<br>
 		<br>
-		{% include "main/modals/progress.html" with header="Changing card information" sub_header="Waiting for response from payment gateway" %}
+		{% include "main/modals/progress.html" with header="Changing card information" sub_header="Attente de la réponse de la passerelle du paiement" %}
 
-		{% include "main/modals/error.html" with sub_header="Feel free to contact our support." retry_label="Retry Update" %}
+		{% include "main/modals/error.html" with sub_header="N'hésitez pas à contacter notre équipe technique." retry_label="Refaire la mise a jour" %}
 
-		{% include "main/modals/success.html" with success_message="Payment details were changed successfully."%}
+		{% include "main/modals/success.html" with success_message="Détails de paiement ont été modifiées avec succès."%}
 
 		<form id="stripeForm" action="{% url change_card_ajax %}" method="POST" style='display:none;'>
 			{% csrf_token %}

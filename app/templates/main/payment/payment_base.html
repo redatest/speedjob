@@ -1,44 +1,74 @@
 {% extends "site_base.html" %}
 
 {% block body %}
+
+<div class="row-fluid">
+	<i class="icon-home"></i>
+	<a href="/pay/" class='under'>Menu paiement</a>		
+</div>
+
 	<div class="container">
 
 		<div class="row">
-			<div class="span8 offset2 text-center">
+			<div class="span8 offset1 text-center">
+
 				<div class="page-header">
-					<h1>Vanilla Checkout.js</h1>
+
+
+					
+					<div class="text-center">
+						Veuillez choisir votre plan
+					</div>
+					
 				</div>
-				<br>
-				<br>
 
 				<div class="well span3">
-					<h3>Normal Potatoes</h3>
-					<p><i class="icon-gbp icon-2x"></i><span class="subscription-price"> 15</span></p>
-					<p>per month</p>
+					
+					<div class="price-header">
+						<h3 style='color:#000'>Mensuel</h3>
+					</div>
+					
+
+					<p><i class="icon-eur icon-2x"></i><span class="subscription-price"> 15</span></p>
+					<br>
+					<p>par mois</p>
+					<br>
 					{% include "main/payment/_payment_form.html" with plan=plans.potato_normal %}
 
-					<a href="" class="subscribeBtn btn btn-success btn-large">Sign Up</a>
+					<a href="" class="subscribeBtn btn btn-success btn-large pay-btn">choisir</a>
 					<br>
 					<br>
 				</div>
 
 				<div class="well span3">
-					<h3>Premier Potatoes</h3>
-					<p><i class="icon-gbp icon-2x"></i><span class="subscription-price"> 30</span></p>
-					<p>per month</p>
+
+					<div class="price-header">
+						<h3 style='color:#000'>Annuel</h3>
+					</div>
+					
+					<p><i class="icon-eur icon-2x"></i><span class="subscription-price"> 30</span></p>
+					<br>
+					<p>par année</p>
+					<br>
 					{% include "main/payment/_payment_form.html" with plan=plans.potato_premier %}
 
-					<a href="" class="subscribeBtn btn btn-success btn-large">Sign Up</a>
+					<a href="" class="subscribeBtn btn btn-success btn-large pay-btn">choisir</a>
 					<br>
 					<br>
 				</div>
 			</div>
+
 		</div>
+		<br>
+		<!-- 
 		<div class="row">
 			<div class="text-center">
+				<br>
 				<p><small>All payments are securely handled by <a href="//www.stripe.com" target="_blank">Stripe</a>.</small></p>
+				<br>
 			</div>
 		</div>		
+		 --> 
 	</div>
 
 	{% block extra_content %}

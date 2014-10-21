@@ -2,28 +2,31 @@
 
 {% block main_header %}
 	<div class='page-header text-center'>
-		<h1>Cancel Subscription</h1>
+		<h1>Annulation de l'abonnement</h1>
 	</div>
 {% endblock main_header %}
 {% block main_content %}
 
 	<div class='text-center'>
-		<p class='lead'>If you want to cancel your subscription, click on the button below.</p>
-		<br>
+		<p class='lead'>Si vous souhaitez annuler votre abonnement , cliquez sur le bouton ci-dessous.</p>
 		<br>
 
-		<a id='cancel' class="btn btn-danger btn-large"href="#">CANCEL SUBSCRIPTION</a>
+		<a id='cancel' class="btn btn-danger btn-large"href="#">Annuler Abonnement</a>
+
+		<br>
+		<br>
+		
 	</div>
 
 	<div id="confirmModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-header text-center">
-			<h3>Confirm Cancellation</h3>
+			<h3>Confirmez l'annulation</h3>
 		</div>
 		<div class="modal-body">
 			<br>
 			<div class="row-fluid">
 				<div class="span8 offset2 text-center">
-					Do you really want to cancel your subscription?
+					Voulez-vous vraiment annuler votre abonnement?
 				</div>
 				<form id="cancelSubscriptionForm" action="{% url cancel_ajax %}" method="POST">
 					{% csrf_token %}
@@ -32,17 +35,17 @@
 		</div>
 		<div class="modal-footer">
 			<div class='text-center'>
-				<a id="confirm-yes" class="btn btn-danger" href="#">Yes</a>
-				<a id="confirm-no" class="btn btn-default" href="#">No</a>
+				<a id="confirm-yes" class="btn btn-danger" href="#">Oui</a>
+				<a id="confirm-no" class="btn btn-default" href="#">Non</a>
 			</div>
 		</div>
 	</div>
 
-	{% include "main/modals/progress.html" with header="Cancelling subscription" sub_header="Waiting for response from payment gateway" %}
+	{% include "main/modals/progress.html" with header="Annulation de l'abonnement" sub_header="Attente de la réponse de la passerelle du paiement" %}
 
-	{% include "main/modals/error.html" with sub_header="Please contact our support team." %}
+	{% include "main/modals/error.html" with sub_header="Veillez contacter notre équipe technique." %}
 
-	{% include "main/modals/success.html" with header="Your subscription was cancelled." success_message="Sorry to see you go..."%}
+	{% include "main/modals/success.html" with header="Votre abonnement a été annulé." success_message="Désolé pour votre départ..."%}
 {% endblock main_content %}
 
 {% block extra_js %}

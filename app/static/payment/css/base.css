@@ -15,9 +15,26 @@ body {
 }
 
 .navbar {
-	margin-top: 30px;
+	margin-top: 0px;
 	margin-bottom: 40px;
 	position: relative;
+	color:#000;
+}
+
+#navigation .nav .dropdown a{
+	color:#000;
+}
+
+#navigation .nav li a {
+	color:#000;
+}
+
+.navbar .nav {
+	position: relative;
+	left: 0;
+	display: block;
+	float: left;
+	margin: 0 20px 0 0;
 }
 
 .logo {
@@ -27,6 +44,106 @@ body {
 	top: -25px;
 	left: 10px;
 }
+
+.alert-info {
+	background-color: #eceff6;
+	border-color    : #d4deeb;
+	color           : #3a87ad;
+}
+
+.alert-success {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #468847;
+}
+
+.price-header{
+	background: #e1e4ea;
+	padding: 4% 0;
+}
+
+.well{
+	border : 1px solid #d4deeb;
+}
+
+.page-header {
+	padding-bottom: 9.5px;
+	margin: 21px 0 31.5px;
+	border-bottom: 1px solid #ecf0f1;
+	font-size: 15px !important;
+	line-height: 21px;
+	color: #2c3e50 !important;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.pay-btn{
+	border: 2px solid #ccc;
+	/*mp*/
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 4px;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0) inset, 0 -2px 0 #c8c8c8 inset, 0 1px 1px 1px rgba(0, 0, 0, 0);
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.1);
+	
+	transition: background .2s ease-in, color .2s ease-in;
+}
+
+ul.horizontal.full.four.padded.ruled > li {
+	  margin: 0;
+	  padding: 2%;
+	  width: 20% !important;
+	  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: 20px;
+	}
+
+.modal-dialog h1,h2,h3,h4,h5,h6{
+	color: #fff;
+}
+
+.modal-header h3 {
+	color:#fff;
+}
+
+h4#modal-title{
+	color:#fff !important;
+}
+
+div.well h3{
+	color: #073D74 !important;
+	font-size: 17px;	
+	font-weight: bold;
+}
+
+
+.modal-header h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	line-height: 30px;
+	color: #fff;
+}
+
 
 .navbar .brand {
 	margin: 0 0 0 90px;
