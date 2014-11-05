@@ -4,7 +4,9 @@
 
 
 {% block extra_style %}
+
   <link rel="stylesheet" href="/static/test.css">     
+
 {% endblock extra_style %}
 
 {% block topheader %} {% endblock topheader %}
@@ -46,7 +48,7 @@
 
 
 										                  <div class="control-group">
-	                                        <label class="control-label">Prenom</label>
+	                                        <label class="control-label">Nom d'utilisateur</label>
 	                                        <div class="controls">
 	                                           <input type="text" id='id_username' name="username" class="span6">
 	                                           {% if form.username.errors %}  <span class="help-inline">{{ form.username.errors }}</span> {% endif %}
@@ -86,12 +88,19 @@
 	                                     <p class="required"><label for="id_is_candid_0">Vous êtes :</label> </p>
 
 	                                     <ul>
-                  											<li><label for="id_is_candid_0"><input type="radio" id="id_is_candid_0" value="1" name="is_candid"> Candidat</label></li>
-                  											<li><label for="id_is_candid_1"><input type="radio" id="id_is_candid_1" value="0" name="is_candid"> Recruteur</label></li>
+                  											<li><label for="id_is_candid_0">
+                                          <input type="radio" id="id_is_candid_0" value="1" name="is_candid"> Candidat</label>
+                                        </li>
+
+                  											<li>
+                                          <label for="id_is_candid_1"><input type="radio" id="id_is_candid_1" value="0" name="is_candid"> Recruteur</label>
+                                        </li>
                   										 </ul>
 
 
                                      <br/>
+
+
                                      
                                      <div class="col-sm-12">
 
@@ -104,6 +113,8 @@
 
                                   </form>
                                     </div>
+
+
 
                                 </div>
 
@@ -140,3 +151,4 @@
 {% block sidecontent %} {% endblock sidecontent %}
 
 {% block footer %} {% endblock footer %}
+

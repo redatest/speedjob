@@ -22,20 +22,6 @@
     <!-- BEGIN TABLE BODY -->
     <div class="body">
 
-      <ol>
-        <li>
-          <strong> 
-            - Clickez sur l'icone <i class="fa fa-power-off min-size red"></i> pour valider les demandes non confirmées
-          </strong>
-        </li>
-
-        <li>
-            <strong>- Cela vous évite de voir les notification sur le menu </strong>
-        </li>
-      </ol>
-
-      <br>
-
         {% if applyers %}
           <!-- BEGIN TABLE DATA -->
         <div id="editable_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -45,26 +31,30 @@
                 <tr role="row">
 
                   <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="ID" style="width: 50px;text-align: center;">
-                    Profile
-                  </th>
-
-                  <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column descending" style="width: 186px;text-align: center;">Nom
+                    Voir
                   </th>
 
                   <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="ID" style="width: 130px;text-align: center;">
                     Prénom
                   </th>
 
-                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending" style="width: 122px;text-align: center;">Déposé le:
+                  <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column descending" style="width: 186px;text-align: center;">Nom
                   </th>
 
-                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 150px;text-align: center;">Niveau d'études
+
+                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending" style="width: 122px;text-align: center;">N° Telephone
+                  </th>
+
+                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending" style="width: 160px;text-align: center;"> Niveau d'études
+                  </th>
+
+                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 200px;text-align: center;">Disponibilité
                   </th>
 
                   <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Last Login: activate to sort column ascending" style="width: 110px;text-align: center;">Expérience
                   </th>
 
-                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending" style="width: 160px;text-align: center;"> Confirmer
+                  <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Edit: activate to sort column ascending" style="width: 46px;text-align: center;">Statut
                   </th>
 
                   <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable" rowspan="1" colspan="1" aria-label="Edit: activate to sort column ascending" style="width: 46px;text-align: center;">CV
@@ -78,30 +68,25 @@
             <!-- END -->
               <tbody role="alert" aria-live="polite" aria-relevant="all">
 
-                {% for i in appli %}
+                {% for i in applyers %}
                   
                    <tr id="data1" class="gradeX odd">
 
-                      <td class=" "><a class="edit" href="{{ i.person.get_absolute_url }}">&nbsp;&nbsp;<i class="fa fa-search min-size gray"></i></a></td>
+                      <td class=" "><a class="edit" href="{{ i.get_absolute_url }}">&nbsp;&nbsp;<i class="fa fa-search min-size gray"></i></a></td>
 
-                      <td class=" sorting_1"> {{ i.person.last_name }} </td>
-                      <td class=" ">          {{ i.person.prenom }}    </td>
-                      <td class=" ">          {{ i.created|date:'SHORT_DATE_FORMAT' }} </td>
+                      <td class=" ">          {{ i.prenom }}    </td>
+                      <td class=" sorting_1"> {{ i.last_name }}   </td>
+                      <td class=" ">          {{ i.telephone }} </td>
 
+                      <td class=" "> {{ i.get_study_level_display }}  </td>
 
-                      <td class=" "> {{i.person.get_study_level_display}} </td>
+                      <td class=" "> {{ i.get_disponibility_display}} </td>
 
-                      <td class=" "> {{i.person.get_experience_display }} </td>
-
-                      <td class="">
-                        {% if i.is_seen %}
-                          <a href="/application/{{ i.offer.id }}/reject/{{ i.person.id }}/set/{{ i.id }}">&nbsp;&nbsp;<i class="fa fa-power-off min-size green"></i></a>
-                        {% else %}  
-                          <a href="/application/{{ i.offer.id }}/confirm/{{ i.person.id }}/set/{{ i.id }}">&nbsp;&nbsp;<i class="fa fa-power-off min-size red"></i></a>
-                        {% endif %}
-                      </td>
+                      <td class=" "> {{ i.get_experience_display }} </td>
 
                       <!-- <td class=" "><a class="edit" href="javascript:alert('en cours de dev')"><i class="fa  fa-check-circle-o gray"></i></a></td> --> 
+                      <td class=" "><a class="edit" href="/application/{{ offer.id }}/confirm/{{ i.id }}/">Non</a></td>
+
                       <td class=" "><a class="edit" href="javascript:alert('en cours de dev')"><i class="fa fa-file-pdf-o blue"></i></a></td>
 
                   </tr>

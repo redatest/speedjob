@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from offre.models import Offer
 from article.models import Article
 from car_shop.forms import Search_Form, Text_Search_Form
-from profile.models import Profile_candid, Profile_emp
+from profile.models import Profile_candid, Profile_emp, Application
 from profile.forms import UserInfoForm, EmployerInfoForm
 
 # pagination ans search
@@ -188,13 +188,15 @@ def emp_profile_offres(request):
 
 @login_required
 def emp_profile_offer_applyers(request, id):
-    
+
     offer       = Offer.objects.get(id=id)
     applyers    = offer.profile_candid_set.all()
 
     usname      = request.user.username
     uslname     = request.user.last_name
     userinfo    = Profile_emp.objects.get( user = request.user )
+
+    appli       = userinfo.application_set.filter(offer=offer)
 
     return render_to_response('./profile/profile_emp_offer_applyers.html', locals(), context_instance=RequestContext(request))
 

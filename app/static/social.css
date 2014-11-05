@@ -1648,7 +1648,7 @@ table.no-table {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 70px;
   z-index: 1000;
   display: none;
   float: left;

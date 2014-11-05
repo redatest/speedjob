@@ -1,6 +1,11 @@
 {% extends "sitebase.html" %}
 {% load dajaxice_templatetags i18n group_check cache %}
 
+{% block style %}
+  {{ block.super }}
+
+{% endblock style %}
+
 {% block extra_script %}
 
   <script type="text/javascript">
@@ -32,6 +37,22 @@
                     window.location.href = '/map_search/?'+query_string;
             }
         });
+
+          $('a.list-group-item.reg_search').on('click', function(e){
+            e.preventDefault();
+            var region = $(this).data('reg');
+            var dict = {
+                      region:        region,
+                      category:     'all',
+                      offer:        'all',
+                      low_salary:   'all',
+                      high_salary:  'all',
+                      csrfToken :   $('input[name="csrfmiddlewaretoken"]').val()
+                      };
+                      var query_string = $.param( dict, true );
+            window.location.href = '/map_search/?'+query_string;
+            // alert(query_string);
+        });
       });
 
   </script>
@@ -54,12 +75,59 @@
             <i class="fa fa-square-o fa-stack-2x "></i>
             <i class="fa fa-binoculars fa-stack-1x "></i>
           </span>
-          Recherche par région {{msg}}
+          Recherche par région 
           
         </div>
 
         <div class="panel-body">
-          <div id="francemap" style="width: 300px; height: 300px; margin-left: 25%;"></div>
+
+          <div class="col-sm-6">
+            <div id="francemap" style="width: 300px; height: 300px; "></div>
+          </div>
+
+          <div class="col-sm-6">
+
+            <div class="list-group">
+
+              <a href="#" class="list-group-item reg_search" data-reg="5">
+                <h4 class="list-group-item-heading">Ile de France</h4>
+                <p class="list-group-item-text " >
+                  Nombre d'offres : {{IDF_offers_count}}.  &nbsp;<span style='float:right'>Voir &nbsp; <i class="fa fa-search black-ns"></i></span>
+                </p>
+              </a>
+
+              <a href="#" class="list-group-item reg_search" data-reg='16'>
+                <h4 class="list-group-item-heading">Midi-Pyrénées</h4>
+                <p class="list-group-item-text ">
+                  Nombre d'offres : {{MIDI_offers_count}}. &nbsp;<span style='float:right'>Voir &nbsp; <i class="fa fa-search black-ns"></i></span>
+                </p>
+              </a>
+
+              <a href="#" class="list-group-item reg_search" data-reg="14">
+                <h4 class="list-group-item-heading">PACA</h4>
+                <p class="list-group-item-text ">
+                  Nombre d'offres : {{PACA_offers_count}}. &nbsp;<span style='float:right'>Voir &nbsp; <i class="fa fa-search black-ns"></i></span>
+                </p>
+              </a>
+
+              <a href="#" class="list-group-item reg_search" data-reg='1'>
+                <h4 class="list-group-item-heading">Nord-Pas-de-Calais.</h4>
+                <p class="list-group-item-text ">
+                  Nombre d'offres : {{CALAIS_offers_count}}. &nbsp;<span style='float:right'>Voir &nbsp; <i class="fa fa-search black-ns"></i></span>
+                </p>
+              </a>
+
+              <a href="#" class="list-group-item reg_search" data-reg="6">
+                <h4 class="list-group-item-heading">Bretagne.</h4>
+                <p class="list-group-item-text ">
+                  Nombre d'offres : {{BRETAGNE_offers_count}}. &nbsp;<span style='float:right'>Voir &nbsp; <i class="fa fa-search black-ns"></i></span>
+                </p>
+              </a>
+
+            </div>
+                            
+          </div>
+          
         </div>
       </div>
       <!-- test ineractive map ends --> 
@@ -83,7 +151,7 @@
                     <!-- <img width="70" height="70" src="http://placehold.it/70x70" alt="image"> --> 
                     <div class="stacked-icons">
                       <span class="fa-stack fa-3x">
-                        <i class="fa fa-calendar-o fa-stack-17x white-ns"></i>
+                        <i class="fa fa-calendar-o fa-stack-17x blue-ns"></i>
                         <strong class="fa-stack-1x calendar-text">{{i.get_offerType_display}}</strong>
                       </span>
                     </div>

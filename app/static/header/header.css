@@ -33,6 +33,11 @@ a, a:hover, a:link, a:active, a:visited {
     height: 100px;
 }
 
+.badge.badge-info{
+  background-color: #08C;
+  font-weight: normal;
+}
+
 /* list group custom */
 .list-group-item{
   color: rgb(86, 86, 86);
@@ -315,6 +320,11 @@ b{
   #navigation .nav .dropdown a {
     padding-left: 0px;
     padding-right: 25px;
+  }
+
+  #navigation .nav .dropdown a.not {
+    padding-left: 0px;
+    padding-right: 5px;
   }
 }
 @media (min-width: 1200px) {

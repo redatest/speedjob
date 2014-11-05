@@ -109,7 +109,18 @@ class Profile_emp(RandomPrimaryIdModel):
                 break
             else:
                 continue 
-        return msg    
+        return msg
+
+    def is_there_non_confirmed_app(self):
+        result = False
+        for i in self.application_set.all():
+            print i
+            if not i.is_seen:
+                result = True
+                break
+
+        return result    
+
 
 class Profile_candid(RandomPrimaryIdModel):
     # id          = models.CharField(max_length=36, primary_key=True, default=lambda: ''.join([ i for i in str(uuid4()) if i != '-']) , editable=False)
@@ -188,19 +199,10 @@ class Profile_candid(RandomPrimaryIdModel):
                 continue 
         return msg
 
+    def is_my_application_confirmed(self, offer_id):
+        # apli = 
+        return False    
 
-class Application(models.Model):
-    offer   = models.ForeignKey(Offer, verbose_name="offre")
-    person  = models.ForeignKey(Profile_candid, verbose_name="Candidat")
-    company = models.ForeignKey(Profile_emp, verbose_name="entreprise")
-    created = models.DateTimeField(verbose_name= "date de candidature", auto_now_add=True)
-    is_seen = models.BooleanField(verbose_name='Vue', default=False)
-
-    class Meta:
-        verbose_name = 'candidature'
-
-    def __unicode__(self):
-        return unicode(('User: %s offer: %s') %(self.person.user.username, self.offer.title))   
 
     
 def pdf_post_save(sender, instance=False, **kwargs):
@@ -247,4 +249,17 @@ def user_registered_callback(sender, user, request, **kwargs):
 
 user_registered.connect(user_registered_callback)
 
+
+class Application(models.Model):
+    offer   = models.ForeignKey(Offer, verbose_name="offre")
+    person  = models.ForeignKey(Profile_candid, verbose_name="Candidat")
+    company = models.ForeignKey(Profile_emp, verbose_name="entreprise")
+    created = models.DateTimeField(verbose_name= "date de candidature", auto_now_add=True)
+    is_seen = models.BooleanField(verbose_name='Vue', default=False)
+
+    class Meta:
+        verbose_name = 'candidature'
+
+    def __unicode__(self):
+        return unicode(('User: %s offer: %s') %(self.person.user.username, self.offer.title))   
 

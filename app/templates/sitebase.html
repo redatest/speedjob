@@ -53,6 +53,10 @@
         <link rel="stylesheet" href="/static/eldarion-ajax/js/eldarion-ajax.min.js">
         <script src="//checkout.stripe.com/v2/checkout.js"></script>
 
+        
+
+
+
     {% endblock style %}  
 
     {% block extra_css %} {% endblock %}
@@ -65,6 +69,9 @@
 
         <script src="/static/js/jquery.js"></script>
         <script src="/static/style/bootstrap/js/bootstrap.js"></script>
+        <script src="/static/js/jquery.infinitescroll.min.js"></script>
+        <script src="/static/js/custom.js"></script>
+
         <!-- jasny --> 
         <script src="/static/jasny-bootstrap/js/jasny-bootstrap.js"></script>
         <!-- vmap --> 
@@ -183,7 +190,31 @@
                       {% if user|in_group:"candidate" %}
                           <li> <a href="/candid_profile"><i class="fa fa-user sml-size"></i> : {{ request.user.username }}</a> </li>
                       {% else %}
+
                           <li>  <a href="/emp_profile"><i class="fa fa-user sml-size"></i>  : {{ request.user.username }}</a> </li>
+
+                            <!-- notification --> 
+                      
+                            {% if is_there_emplyer_notif %}
+
+                            <li class="dropdown nav-messages">
+
+                                <a href="#" class="dropdown-toggle not" data-toggle="dropdown">
+                                  <span class="badge badge-info">note</span>
+                                  <i class="icon-envelope"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu" style='padding:5px !important;'>
+                                  <li class="nav-messages-header">
+                                    <a tabindex="-1" href="/applications">Vous avez des nouvelles candidatures</a>
+                                  </li>
+                                </ul>
+                                
+                              </li>
+                              
+                            {% endif %}
+
+                            <!-- notification ends --> 
                               
                           {% with request.user.customer.current_subscription as cur_sub %}
 
@@ -232,9 +263,9 @@
   <br/>
 
   {% block sidecontent %}
-    {% cache 3600 base_sidecontent_html %}
+    
       {% include "./parts/base_sidecontent.html" %}  
-    {% endcache %}
+    
   {% endblock sidecontent %} 
 
       </div> <!-- end row -->

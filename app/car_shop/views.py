@@ -49,15 +49,35 @@ def set_notification_message(view):
         return view(request, msg, *args, **kwargs)
     return wrapper
     
+def set_emplyer_notification(view):
+    @wraps(view)
+    def wrapper(request, *args, **kwargs):
+        notif = None
+        # notif = None
+        if request.user.is_authenticated():
+            u = request.user
+            if u.groups.filter(name="candidate"):
+                profile = Profile_candid.objects.get(user = u)
+                notif = profile.get_all_fields()
+            elif u.groups.filter(name="employer"):
+                profile = Profile_emp.objects.get(user = u)
+                notif = profile.get_all_fields()    
+        else:
+            notif = None
+        return view(request, notif, *args, **kwargs)
+    return wrapper
 
+# @set_emplyer_notification
 @set_notification_message
 def home(request, msg):
     # offers      = Offer.objects.index_is_activated
-    offer_cache_key = request.path+'index'
-    offers = cache.get(offer_cache_key)
-    if not offers:
-        offers = Offer.objects.filter(activated = True).order_by('-created')[:8]
-        cache.set(offer_cache_key, offers, CACHE_TIMEOUT)
+    offers = Offer.objects.filter(activated = True).order_by('-created')[:8]
+
+    IDF_offers_count      = Offer.objects.filter(activated = True).filter(region = 5).count()
+    MIDI_offers_count     = Offer.objects.filter(activated = True).filter(region = 16).count()
+    PACA_offers_count     = Offer.objects.filter(activated = True).filter(region = 14).count()
+    CALAIS_offers_count   = Offer.objects.filter(activated = True).filter(region = 1).count()
+    BRETAGNE_offers_count = Offer.objects.filter(activated = True).filter(region = 6).count()
 
     form        = Search_Form()
     text_form   = Text_Search_Form()

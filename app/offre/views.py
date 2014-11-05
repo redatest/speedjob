@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, RequestContext, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render_to_response, RequestContext, HttpResponseRedirect, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -284,3 +284,29 @@ def deposer_offre(request):
 def after_upload(request):
     return render_to_response('offre/after_upload.html', locals(), context_instance = RequestContext(request))
 
+@login_required
+def app_confirm(request, offer_id, user_id, app_id):
+    
+    app = Application.objects.get(id = app_id)
+    app.is_seen = True
+    app.save()
+    # return redirect('emp_profile_offer_applyers', id=offer_id) 
+    return HttpResponseRedirect('/applications')
+
+@login_required
+def app_reject(request, offer_id, user_id, app_id):
+    
+    app = Application.objects.get(id = app_id)
+    app.is_seen = False
+    app.save()
+    # return redirect('emp_profile_offer_applyers', id=offer_id) 
+    return HttpResponseRedirect('/applications')
+
+@login_required
+def applications(request):
+
+    entreprise = Profile_emp.objects.get(user = request.user)
+
+    apps = Application.objects.filter(company = entreprise)
+
+    return render_to_response('profile/profile_emp_applications.html', locals(), context_instance=RequestContext(request))

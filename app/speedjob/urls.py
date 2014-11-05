@@ -39,6 +39,13 @@ urlpatterns = patterns('',
 
     url('^offer/(?P<num>\w+)/postulate/$', "offre.views.offer_postulate", name='offer_postulate'),    
 
+    # application
+    url('^applications/$', "offre.views.applications", name='applications'),
+
+    url('^application/(?P<offer_id>\w+)/confirm/(?P<user_id>\w+)/set/(?P<app_id>\w+)$', "offre.views.app_confirm", name='app_confirm'),
+
+    url('^application/(?P<offer_id>\w+)/reject/(?P<user_id>\w+)/set/(?P<app_id>\w+)/$', "offre.views.app_reject", name='app_reject'),    
+
     # article
     url('^news$', "article.views.news", name='news'),
 
