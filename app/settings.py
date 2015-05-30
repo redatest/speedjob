@@ -216,8 +216,8 @@ LOGIN_REDIRECT_URL = '/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "redatest7dev@gmail.com"
-EMAIL_HOST_PASSWORD = 'redatest7'
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 
 ACCOUNT_ACTIVATION_DAYS = 14
@@ -225,10 +225,10 @@ ACCOUNT_ACTIVATION_DAYS = 14
 
 # Stripe payments
 
-STRIPE_SECRET_KEY    = "sk_test_mopWUvH81IrewEKfXKN9e6rq"
-STRIPE_PUBLIC_KEY    = "pk_test_v9t1PMYuYgsUM5Zsoj3uFn2b"
+STRIPE_SECRET_KEY    = ""
+STRIPE_PUBLIC_KEY    = ""
 
-PAYMENTS_INVOICE_FROM_EMAIL = 'redatest7@gmail.com'
+PAYMENTS_INVOICE_FROM_EMAIL = ''
 
 PAYMENTS_PLANS = {
     "potato_normal": {
